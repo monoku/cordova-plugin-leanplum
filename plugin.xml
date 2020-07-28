@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-leanplum" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>NSLeanplum</name>
+    <js-module name="NSLeanplum" src="www/NSLeanplum.js">
+        <clobbers target="cordova.plugins.NSLeanplum" />
+    </js-module>
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+        <feature name="NSLeanplum">
+            <param name="android-package" value="com.monoku.leanplum.NSLeanplum" />
+        </feature>
+        </config-file>
+        <source-file src="src/android/com/ns_leanplum/NSLeanplum.java" target-dir="src/com/monoku/leanplum/" />
+        <framework src="com.leanplum:leanplum-core:4.2.9" />
+    </platform>
+
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="NSLeanplum">
+                <param name="ios-package" value="NSLeanplum" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/NSLeanplum.swift" />
+
+        <!-- Leanplum SDK -->
+        <podspec>
+            <config>
+                <source url="https://cdn.cocoapods.org/"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="Leanplum-iOS-SDK" spec="2.7.3"/>
+            </pods>
+        </podspec>
+    </platform>
+
+</plugin>
