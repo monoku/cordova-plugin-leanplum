@@ -69,6 +69,14 @@ public class NSLeanplum extends CordovaPlugin {
             return true;
         }
 
+        if (action.equals("setUserAttributes")) {
+            JSONObject attributes = args.getJSONObject(0);
+
+            this.setUserAttributes(attributes);
+            return true;
+        }
+
+
         if (action.equals("track")) {
             String event = args.getString(0);
             JSONObject properties = args.getJSONObject(1);
@@ -129,6 +137,10 @@ public class NSLeanplum extends CordovaPlugin {
 
     private void setUserId(String id) {
         Leanplum.setUserId(id);
+    }
+
+    private void setUserAttributes(JSONObject attributes) throws JSONException {
+        Leanplum.setUserAttributes(jsonToMap(attributes));
     }
 
     private void start() {

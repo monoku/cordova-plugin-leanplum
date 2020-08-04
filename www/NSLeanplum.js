@@ -59,3 +59,8 @@ exports.onVariablesChanged = function (success, error) {
     const options = [];
     exec(success, error, "NSLeanplum", "onVariablesChanged", options);
 };
+
+exports.setUserAttributes = function (attributes, success, error) {
+    const options = [attributes];
+    exec(success, error, "NSLeanplum", "setUserAttributes", options);
+};

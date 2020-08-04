@@ -18,7 +18,7 @@ Use Leanplum Plugin in Cordova projects
 - [x] [setVariables](#set-variables)
 - [x] [getVariable](#get-a-variable)
 - [x] [getVariables](#get-variables)
-- [ ] setUserAttributes
+- [x] [setUserAttributes](#set-user-attributes)
 - [ ] advance
 - [ ] pauseState
 - [ ] resumeState
@@ -36,13 +36,13 @@ Use Leanplum Plugin in Cordova projects
 ## Installation
 
 ```bash
-$ cordova plugin add cordova-plugin-leanplum --save
+$ cordova plugin add https://github.com/monoku/cordova-plugin-leanplum.git --save
 ```
 
 ## Usage
 
 ### Set Leanplum credentials for development
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -51,7 +51,7 @@ NSLeanplum.setAppIdForDevelopmentMode(<appId>, <setAppIdForProductionMode>, succ
 ```
 
 ### Set leanplum credentials for production
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -61,7 +61,7 @@ NSLeanplum.setAppIdForProductionMode(<appId>, <setAppIdForProductionMode>, succe
 
 ### Set variables
 
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -80,7 +80,7 @@ NSLeanplum.setVariables({
 
 ### Start
 
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -90,17 +90,30 @@ NSLeanplum.start();
 
 ### Set userId
 
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
 NSLeanplum.setUserId(id, success, error);
 
 ```
+### Set user attributes
+
+```js
+
+const { NSLeanplum } = window.cordova.plugins;
+
+NSLeanplum.setUserAttributes({
+  name: 'My name',
+  email: 'foo@example.com',
+  age: 20,
+});
+
+```
 
 ### Track events
 
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -110,7 +123,7 @@ NSLeanplum.track('Purchase', {itemCategory: 'Apparel', itemName: 'Shoes'});
 
 ### Get a variable
 Get a specific variable
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -123,7 +136,7 @@ NSLeanplum.getVariable('variable_name', (data) => {
 ### Get variables
 Get list of variables
 
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -139,7 +152,7 @@ Because Leanplum variables and resources are retrieved from the server asynchron
 ### onStartResponse
 This callback is executed only when the start call finishes and all variables and files are returned from the Leanplum server. 
 
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -152,7 +165,7 @@ NSLeanplum.onStartResponse(() => {
 ### onValueChanged
 This callback is executed after start every time, but only after `forceContentUpdate` if a specific variable has changed.
 
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
@@ -163,7 +176,7 @@ NSLeanplum.onValueChanged('variable_name', (data) => {
 ```
 ### onVariablesChanged
 This callback is executed after start every time, but only after `forceContentUpdate` if any variable has changed.
-```javascript
+```js
 
 const { NSLeanplum } = window.cordova.plugins;
 
