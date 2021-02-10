@@ -46,7 +46,7 @@ var variables = [String: LPVar]()
     @objc(setAppIdForProductionMode:) func setAppIdForProductionMode(command: CDVInvokedUrlCommand) {
         let appId = command.argument(at: 0) as? String ?? ""
         let accessKey = command.argument(at: 1) as? String ?? ""
-        Leanplum.setAppId(appId, withDevelopmentKey: accessKey)
+        Leanplum.setAppId(appId, withProductionKey: accessKey)
     }
     
     @objc(track:) func track(command: CDVInvokedUrlCommand) {
