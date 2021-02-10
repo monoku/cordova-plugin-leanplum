@@ -1,5 +1,6 @@
 package com.monoku.leanplum;
 
+import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
@@ -13,6 +14,7 @@ import org.json.JSONObject;
 
 import com.leanplum.Leanplum;
 import com.leanplum.Var;
+import com.leanplum.LeanplumActivityHelper;
 import com.leanplum.callbacks.StartCallback;
 import com.leanplum.callbacks.VariableCallback;
 import com.leanplum.callbacks.VariablesChangedCallback;
@@ -33,6 +35,9 @@ public class NSLeanplum extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("start")) {
             Context self = this.cordova.getActivity().getApplicationContext();
+            Application cordovaApp = this.cordova.getActivity().getApplication();
+
+            LeanplumActivityHelper.enableLifecycleCallbacks(cordovaApp);
             Leanplum.setApplicationContext(self);
             this.start();
             return true;
