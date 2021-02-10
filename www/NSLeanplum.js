@@ -1,4 +1,3 @@
-const { version } = require('cordova');
 var exec = require('cordova/exec');
 
 exports.start = function (data, success, error) {
