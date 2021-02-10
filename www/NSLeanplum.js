@@ -1,3 +1,4 @@
+const { version } = require('cordova');
 var exec = require('cordova/exec');
 
 exports.start = function (data, success, error) {
@@ -63,4 +64,9 @@ exports.onVariablesChanged = function (success, error) {
 exports.setUserAttributes = function (attributes, success, error) {
     const options = [attributes];
     exec(success, error, "NSLeanplum", "setUserAttributes", options);
+};
+
+exports.setAppVersion = function (versionNumber, success, error) {
+    const options = [versionNumber];
+    exec(success, error, "NSLeanplum", "setAppVersion", options);
 };
