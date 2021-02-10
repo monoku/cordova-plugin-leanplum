@@ -64,3 +64,8 @@ exports.setUserAttributes = function (attributes, success, error) {
     const options = [attributes];
     exec(success, error, "NSLeanplum", "setUserAttributes", options);
 };
+
+exports.setAppVersion = function (versionNumber, success, error) {
+    const options = [versionNumber];
+    exec(success, error, "NSLeanplum", "setAppVersion", options);
+};

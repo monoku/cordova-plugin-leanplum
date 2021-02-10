@@ -160,6 +160,11 @@ var variables = [String: LPVar]()
             Leanplum.setUserAttributes(attributesDict)
         }
     }
+
+    @objc(setAppVersion:) func setAppVersion(command: CDVInvokedUrlCommand) {
+        let versionNumber = command.argument(at: 0) as? String ?? "";
+        Leanplum.setAppVersion(versionNumber);
+    }
 }
 
 
